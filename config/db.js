@@ -1,25 +1,34 @@
 const users = [
     {
-        username: 'admin',
+        id: 1,
+        name: 'admin',
         password: 'admin',
-        shortname: 'Admin'
+        shortname: 'Admin',
+        role: 'admin'
     },
     {
-        username: 'jose',
+        id: 2,
+        name: 'jose',
         password: 'jose',
-        shortname: 'José C.'
+        shortname: 'José C.',
+        role: 'gang-leader'
     },
     {
-        username: 'manolo',
+        id: 3,
+        name: 'manolo',
         password: 'manolo',
-        shortname: 'Manolo G.'
+        shortname: 'Manolo G.',
+        role: 'supervisor'
     },
     {
-        username: 'caraquea',
+        id: 4,
+        name: 'caraquea',
         password: 'opegin',
-        shortname: 'Carlos A.'
+        shortname: 'Carlos A.',
+        role: 'gang-leader'
     },
 ];
+
 
 export {
     users

@@ -7,12 +7,12 @@ block content
             form(method="POST" id="form-login")
                 h3.text-center Entrar
                 .mb-3
-                    label.form-label(for='user') Usuario: 
-                    if error === 'user'
-                        input.form-control.is-invalid(name='user' type='text' value= user ? user : '')
+                    label.form-label(for='name') Usuario: 
+                    if error === 'name'
+                        input.form-control.is-invalid(name='name' type='text' value= name ? name : '')
                         p.fw-bold.mt-2.text-danger Usuario Inválido
                     else
-                        input.form-control(name='user' type='text' value= user ? user : '')
+                        input.form-control(name='name' type='text' value= name ? name : '')
                 .mb-3
                     label.form-label(for='password') Contrase&ntilde;a: 
                     if error === 'password'

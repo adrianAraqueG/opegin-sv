@@ -5,10 +5,14 @@ import {
     pageUser,
     pageForms,
     pageRegister,
-    pageReport
+    pageReport,
+    pageLogout,
+    login,
+    admin
 } from '../controller/pageController.js';
 
 const router = express.Router();
+
 
 // Default Route
 router.get('/', (req, res) =>{
@@ -17,10 +21,14 @@ router.get('/', (req, res) =>{
 
 // Routing GET
 router.get('/login', pageLogin);
-router.get('/user', pageUser);
-router.get('/user/forms/create/:form', pageForms);
-router.get('/user/reportar', pageReport);
-router.get('/user/registros', pageRegister);
+router.get('/logout', login, pageLogout);
+router.get('/user', login, pageUser);
+router.get('/user/forms/create/:form', login, pageForms);
+router.get('/user/reportar', login, pageReport);
+router.get('/user/registros', login, pageRegister);
+router.get('/user/admin', login, admin, (req, res) =>{
+    res.send('solo admins loks');
+});
 
 
 // Routing POST

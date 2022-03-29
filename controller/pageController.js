@@ -2,36 +2,31 @@
 import {users as db} from '../config/db.js';
 
 
-
 const pageLogin = (req, res) =>{
-    res.render('login', {nombreSitio: 'OPEGIN', pagina: 'Entrar'});
+    res.render('login', {pagina: 'Entrar'});
 }
 const postLogin = (req, res) =>{
     console.log('accediendo al POST');
-
-    //Datos del FORM
-    const {user, password} = req.body
-    let userValidated = {}
-
-    db.forEach( (userDB, index) =>{
-        if(user === userDB.username){
-            if(password === userDB.password){
-                res.redirect('/user');
-            }else{
-                res.render('login', {
-                    pagina: 'Entrar',
-                    error: 'password',
-                    user: userDB
-                });
-            }
-        }else{
+    const user = db.find(user => user.name === req.body.name);
+    if(user !== undefined){
+        if(user.password === req.body.password){
+            req.session.user = user;
+            console.log(req.session);
+            res.redirect('/user');
+        }else {
             res.render('login', {
                 pagina: 'Entrar',
-                error: 'user',
-                user: userDB
-            });
+                error: 'password',
+                name: req.body.name
+            })
         }
-    });
+    }else{
+        res.render('login', {
+            pagina: 'Entrar',
+            error: 'name',
+            name: req.body.name
+        })
+    }
 
 }
 
@@ -39,7 +34,7 @@ const pageUser =  (req, res) =>{
 
     res.render('home', {
         pagina: 'Inicio',
-        user
+        user: req.session.user
     });
 }
 
@@ -52,15 +47,45 @@ const pageForms = (req, res) =>{
 const pageReport = (req, res) =>{
     res.render('reportar', {
         pagina: 'Reportar',
-        user
+        user: req.session.user
     });
 }
 
 const pageRegister = (req, res) =>{
     res.render('registros', {
         pagina: 'Registros',
-        user
+        user: req.session.user
     });
+}
+
+
+const pageLogout = (req, res) =>{
+    req.session = null
+    req.session.destroy();
+    res.redirect('/login');
+}
+
+
+/**
+ * MIDDLEWARES
+ */
+function login(req, res, next){
+    console.log(req.session.user);
+    if(!req.session.user){
+        res.redirect('/login');
+        console.log('No hay cookie session valida');
+    }else{
+        next();
+    }
+}
+
+function admin(req, res, next){
+    if(req.session.user.role !== 'admin'){
+        res.redirect('/user');
+        console.log('no eres admin');
+    }else{
+        next();
+    }
 }
 
 
@@ -70,5 +95,8 @@ export {
     pageUser,
     pageForms,
     pageRegister,
-    pageReport
+    pageReport,
+    pageLogout,
+    login,
+    admin
 }

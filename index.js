@@ -4,6 +4,7 @@
 import express from 'express';
 import cors from 'cors';
 import router from './routes/index.js';
+import session from 'express-session';
 
 const app = express();
 
@@ -15,15 +16,21 @@ const app = express();
 // Activa políticas CORS para TODAS las RUTAS
 app.use(cors());
 
-// Implementamos bodiParser
+// BodiParser
 app.use(express.urlencoded({extended: false}));
 
-// Setteamos el ViewEngine
+// Sessions
+app.use(session({
+    secret: 'test',
+    resave: false,
+    saveUninitialized: false
+}))
+// ViewEngine
 app.set('view engine', 'pug');
 
 
 
-// Implementamos el Router
+// Router
 app.use('/', router);
 
 // Definir caperta publica (archivos estáticos)

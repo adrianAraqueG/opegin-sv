@@ -1,23 +1,17 @@
-// Evitar el reenvio de un formulario POST
-if(window.history.replaceState) {
-    window.history.replaceState(null, null, window.location.href);
-}
-
-
 // Validar FORM
 const form = document.querySelector('#form-login');
 form.addEventListener('submit', e =>{
     e.preventDefault();
    
-    const user = document.querySelector('input[name="user"]');
+    const name = document.querySelector('input[name="name"]');
     const pass = document.querySelector('input[name="password"]');
 
     // Reset classes
-    user.classList.contains('is-invalid') ? user.classList.remove('is-invalid') : '';
+    name.classList.contains('is-invalid') ? name.classList.remove('is-invalid') : '';
     pass.classList.contains('is-invalid') ? pass.classList.remove('is-invalid') : '';
 
-    if(user.value === ''){
-        user.classList.contains('is-invalid') ? '' : user.classList.add('is-invalid');
+    if(name.value === ''){
+        name.classList.contains('is-invalid') ? '' : name.classList.add('is-invalid');
         return;
     }
     if(pass.value === ''){
