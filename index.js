@@ -19,11 +19,14 @@ app.use(cors());
 // BodiParser
 app.use(express.urlencoded({extended: false}));
 
-// Sessions
+// Sessions - 30 min expires
 app.use(session({
     secret: 'test',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 10000 * 60 * 30
+    }
 }))
 // ViewEngine
 app.set('view engine', 'pug');
