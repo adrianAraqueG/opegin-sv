@@ -1,0 +1,26 @@
+extends ./layout/index
+
+block content
+    .d-flex.flex-column.justify-content-center.align-items-center.container-login
+        h1.text-light OPEGIN 
+        .container.mb-2.mt-2.bg-light.p-4.rounded-3
+            form(method="POST" id="form-login")
+                h3.text-center Entrar
+                .mb-3
+                    label.form-label(for='user') Usuario: 
+                    if error === 'user'
+                        input.form-control.is-invalid(name='user' type='text' value= user ? user : '')
+                        p.fw-bold.mt-2.text-danger Usuario Inválido
+                    else
+                        input.form-control(name='user' type='text' value= user ? user : '')
+                .mb-3
+                    label.form-label(for='password') Contrase&ntilde;a: 
+                    if error === 'password'
+                        input.form-control.is-invalid(name='password' type='password')
+                        p.fw-bold.mt-2.text-danger Contraseña Incorrecta
+                    else
+                        input.form-control(name='password' type='password')
+                .d-grid.gap-2
+                    button.btn.btn-primary(type='submit') Entrar
+
+    script(src="/js/login/login.js")

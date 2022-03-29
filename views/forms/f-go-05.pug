@@ -1,0 +1,1414 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title APCD - PWA
+  link(rel="stylesheet", href="/css/bt/bootstrap.css")
+  link(rel="stylesheet", href="/css/app.css")
+  link(rel='stylesheet', href="/img/bt-icons/bootstrap-icons.css")
+  link(rel='shortcut icon', href="/img/favicon.ico")
+  script(src='/lib/jspdf.min.js')
+// LOADER
+//
+  <div class="d-loader">
+  <div class="loader">Loading...</div>
+  </div>
+h1.text-wrap.text-light.pb-5.pt-5.fw-bold.text-center AN&Aacute;LISIS PREOPERACIONAL DE CUMPLIMIENTO DIARIO
+// DATOS GENEREALES
+.container.bg-light.pt-1.pb-2.mb-4
+  #c_general.mb-5.mt-5
+    h3.text-wrap.fw-bold.fs-5 DATOS GENERALES DE CUADRILLA
+    label.form-text(for='fecha') Fecha
+    input#fecha.form-control.mb-2(type='date', name='fecha')
+    label.form-text(for='departamento') Departamento
+    select#departamento.form-select(name='departamento')
+      option(value='', selected='', disabled='') SELECCIONA UN DEPARTAMENTO--
+      option(value='casanare') CASANARE
+      option(value='caldas') CALDAS
+    label.form-text(for='ciudad') Ciudad
+    select#ciudad.form-select(name='ciudad', disabled='')
+      option(value='def') SELECCIONA UNA CIUDAD--
+  // INTEGRANTES DE CUADRILLA
+  div
+    h3.text-wrap.fs-5.fw-bold INTEGRANTES DE CUADRILLA
+    #integrantes.table-responsive
+    button#abrirModalIntAdd.btn.btn-primary(data-bs-toggle='modal', data-bs-target='#modalIntAdd')
+      | Agregar Integrante
+  // MODAL INTEGRANTES ADD
+  #modalIntAdd.modal.fade(data-bs-backdrop='static', data-bs-keyboard='false', tabindex='-1', aria-labelledby='staticBackdropLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5#intTitleAdd.modal-title Agregar Nuevo Integrante
+          button#btnCloseInt2Add.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+        .modal-body
+          // INPUTS
+          .form-floating.mb-3
+            input#nombreIntAdd.form-control(type='text', name='nombreInt')
+            label(for='nombreInt') Nombre completo
+          .form-floating.mb-3
+            input#cedulaIntAdd.form-control(type='number', name='cedulaInt')
+            label(for='cedulaInt') C&eacute;dula C.C
+          label.form-text(for='cargoInt') Cargo
+          select#cargoIntAdd.form-select(name='cargoInt')
+            option(value='', selected='', disabled='') SELECCIONA UN CARGO--
+            option(value='tecnico') T&Eacute;CNICO
+            option(value='auxiliar') AUXILIAR
+        .modal-footer
+          button#btnCloseInt1Add.btn.btn-secondary(type='button', data-bs-dismiss='modal') Cerrar
+          button#btnSaveInt.btn.btn-primary(type='button') Guardar
+  // FIN MODAL ADD
+  // MODAL INT EDITAR
+  #modalIntEdit.modal.fade(data-bs-backdrop='static', data-bs-keyboard='false', tabindex='-1', aria-labelledby='staticBackdropLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5#intTitleEdit.modal-title Editar Integrante
+          button#btnCloseInt2Edit.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+        .modal-body
+          // INPUTS
+          .form-floating.mb-3
+            input#nombreInt-edit.form-control(type='text', name='nombreInt')
+            label(for='nombreInt') Nombre completo
+          .form-floating.mb-3
+            input#cedulaInt-edit.form-control(type='number', name='cedulaInt')
+            label(for='cedulaInt') C&eacute;dula C.C
+          label.form-text(for='cargoInt') Cargo
+          select#cargoInt-edit.form-select(name='cargoInt')
+            option(value='', selected='', disabled='') SELECCIONA UN CARGO--
+            option(value='tecnico') T&Eacute;CNICO
+            option(value='auxiliar') AUXILIAR
+          hr
+          // ELEMENTOS DE PROTECCIÓN INDIVIDUAL
+          h3.text-wrap.fs-5.fw-bold ELEMENTOS DE PROTECCI&Oacute;N INDIVIDUAL
+          .table-responsive
+            table.table.table-striped.table-bordered.mb-5
+              thead
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th C
+                  th NC
+              tr
+                td 1
+                td Casco
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-1', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-1', value='nc')
+              tr
+                td 2
+                td Barbuquejo
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-2', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-2', value='nc')
+              tr
+                td 3
+                td Overol
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-3', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-3', value='nc')
+              tr
+                td 4
+                td Gafas
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-4', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-4', value='nc')
+              tr
+                td 5
+                td Botas de Caucho
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-5', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-5', value='nc')
+              tr
+                td 6
+                td Botas Diel&eacute;ctricas de Seguridad
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-6', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-6', value='nc')
+              tr
+                td 7
+                td Casco tipo II con Barbuquejo
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-7', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-7', value='nc')
+              tr
+                td 8
+                td Guantes Power Flex
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-8', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-8', value='nc')
+              tr
+                td 9
+                td Guantes de Vaqueta
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-9', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-9', value='nc')
+              tr
+                td 10
+                td Protecci&oacute;n Auditiva Inserci&oacute;n
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-10', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-10', value='nc')
+              tr
+                td 11
+                td Protecci&oacute;n Auditiva Copa
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-11', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-11', value='nc')
+              tr
+                td 12
+                td Chaleco Reflectivo
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-12', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-12', value='nc')
+              tr
+                td 13
+                td Arn&eacute;s
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-13', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-13', value='nc')
+              tr
+                td 14
+                td Tie off
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-14', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-14', value='nc')
+              tr
+                td 15
+                td Eslinga de Posicionamiento
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-15', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-15', value='nc')
+              tr
+                td 16
+                td Eslinga en y
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-16', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-16', value='nc')
+              tr
+                td 17
+                td Mosquet&oacute;n
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-17', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-17', value='nc')
+              tr
+                td 18
+                td Arrestador
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-18', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-18', value='nc')
+              tr
+                td 19
+                td Linea de vida
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-19', value='c')
+                td
+                  input.form-check-input.mt-1.ms-1(type='radio', name='e-p-i-19', value='nc')
+        .modal-footer
+          button#btnCloseInt1Edit.btn.btn-secondary(type='button', data-bs-dismiss='modal') Cerrar
+          button#btnSaveIntEdit.btn.btn-primary(type='button') Guardar
+  hr
+  h3.text-wrap.fw-bold.fs-5 CONDICIONES GENERALES DE LA TAREA Y DEL PERSONAL
+  .d-flex.mb-0
+    .d-flex.flex-row.p-2
+      h4.fs-6 SI
+      input.form-check-input.mt-1.ms-1(type='radio', value='si', name='c-g-ma')
+    .d-flex.flex-row.p-2
+      h4.fs-6 NO
+      input.form-check-input.mt-1.ms-1(type='radio', value='no', name='c-g-ma')
+    .d-flex.flex-row.p-2
+      h4.fs-6 NA
+      input.form-check-input.mt-1.ms-1(type='radio', value='na', name='c-g-ma')
+  .table-responsive
+    table.table.table-light.table-striped.table-bordered.mb-5
+      tr
+        th.no No.
+        th Condici&oacute;n
+        th.input Si
+        th.input No
+        th.input N.A
+        th.agregar Observaciones
+      tr
+        td 1
+        td &iquest;El personal entiende las normas y pr&aacute;cticas de los procedimientos a seguir?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-1', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-1', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-1', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-1-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 2
+        td
+          | &iquest;Se han lavado y/o desinfectado los EPPs, equipos de alturas, herramientas y materiales a utilizar?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-2', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-2', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-2', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-2-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 3
+        td
+          | &iquest;El personal que va desarrollar los trabajos, antes de iniciar cada una de las actividades, ha realizado el respectivo lavado de manos con agua y jab&oacute;n o gel antibacterial?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-3', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-3', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-3', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-3-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 4
+        td
+          | &iquest;Cada trabajador a realizado el reporte de condiciones de salud en productividad?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-4', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-4', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-4', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-4-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 5
+        td &iquest;Se le ha tomado al trabajador la toma de temperatura diaria?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-5', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-5', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-5', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-5-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      td 6
+      td
+        | &iquest;El personal que va a desarrollar los trabajos ha recibido el entrenamiento y se encuentra certificado para realizar la actividad?
+      td
+        input.form-check-input.fs-6.mt-2(type='radio', name='c-g-6', value='si')
+      td
+        input.form-check-input.fs-6.mt-2(type='radio', name='c-g-6', value='no')
+      td
+        input.form-check-input.fs-6.mt-2(type='radio', name='c-g-6', value='na')
+      td
+        button.btn.btn-primary.text-light.p-2(name='c-g-6-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+          i.bi.bi-pencil-square
+      tr
+        td 7
+        td
+          | &iquest;Cada trabajador tiene Certificado de examen m&eacute;dico ocupacional vigente y se encuentra apto para realizar la labor?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-7', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-7', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-7', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-7-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 8
+        td &iquest;Tienen la EPS, ARL, AFP al d&iacute;a?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-8', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-8', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-8', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-8-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 9
+        td
+          | &iquest;El personal cuenta con el equipo de protecci&oacute;n definido para la tarea y para acceder al sitio?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-9', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-9', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-9', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-9-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 10
+        td
+          | &iquest;El personal que va a realizar la labor conoce el procedimiento de emergencia y rescate?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-10', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-10', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-10', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-10-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 11
+        td &iquest;Se cuenta con las hojas de seguridad del producto a usar?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-11', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-11', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-11', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-11-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 12
+        td
+          | &iquest;Son &oacute;ptimas las condiciones de salud de la cuadrilla para realizar la actividad?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-12', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-12', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-12', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-12-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 13
+        td &iquest;El tiempo de sue&ntilde;o ha sido el suficiente para realizar la labor?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-13', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-13', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-13', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-13-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+      tr
+        td 14
+        td
+          | &iquest;Han consumido bebidas alcoh&oacute;licas o sustancias alucin&oacute;genas en las &uacute;ltimas 24 horas?
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-14', value='si')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-14', value='no')
+        td
+          input.form-check-input.fs-6.mt-2(type='radio', name='c-g-14', value='na')
+        td
+          button.btn.btn-primary.text-light.p-2(name='c-g-14-obs', data-bs-toggle='modal', data-bs-target='#modalAggObs')
+            i.bi.bi-pencil-square
+    // MODAL AGREGAR OBSERVACIONES
+    #modalAggObs.modal.fade(data-bs-backdrop='static', data-bs-keyboard='false', tabindex='-1', aria-labelledby='staticBackdropLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5#aggObsLabel.modal-title Agregar Observaciones
+            button#btnCerrarAggObs2.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+          .modal-body
+            textarea#aggObsTxtarea.form-control(placeholder='Aquí puedes escribir las observaciones: ', cols='30', rows='10', style='resize: none;')
+          .modal-footer
+            button#btnCerrarAggObs1.btn.btn-secondary(type='button', data-bs-dismiss='modal') Cerrar
+            button#btnGuardarObs.btn.btn-primary(type='button') Guardar
+  h3.text-wrap.fs-6.fw-bold MEDIDAS DE CONTROL
+  .d-flex.mb-0
+    .d-flex.flex-row.p-2
+      h4.fs-6 Marcar todas
+      input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-ma')
+  .table-responsive
+    table.table.table-striped.table-bordered.mb-5
+      tr
+        th.no No.
+        th Condici&oacute;n
+        th.agregar X
+      tr
+        td 1
+        td Demarcar y se&ntilde;alar el &aacute;rea de trabajo
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-1')
+      tr
+        td 2
+        td Uso de equipo de protecci&oacute;n de ca&iacute;das
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-2')
+      tr
+        td 3
+        td Capacitaci&oacute;n y entrenamiento adecuado
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-3')
+      tr
+        td 4
+        td Instalar puntos de anclaje con resistencias de 5000lb
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-4')
+      tr
+        td 5
+        td Empleo de sistemas de acceso como escaleras
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-5')
+      tr
+        td 6
+        td Empleo de sistemas de acceso como plataformas
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-6')
+      tr
+        td 7
+        td Efectuar conexi&oacute;n a tierra de equipos
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-7')
+      tr
+        td 8
+        td Equipos y herramientas en buen estado
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-8')
+      tr
+        td 9
+        td Realizar medici&oacute;n de la concentraci&oacute;n de gases
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-9')
+      tr
+        td 10
+        td Mantenimiento preventido y correctivo de equipos
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-10')
+      tr
+        td 11
+        td Realizaci&oacute;n de pausas activas
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-11')
+      tr
+        td 12
+        td Medidas de prevenci&oacute;n y/o contenci&oacute;n de derrames
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-12')
+      tr
+        td 13
+        td Mediciones higi&eacute;nicas Atmosf&eacute;ricas
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-13')
+      tr
+        td 14
+        td Aplicaci&oacute;n de procedimientos de trabajo seguro
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-14')
+      tr
+        td 15
+        td Ventilaci&oacute;n natural permanente
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-15')
+      tr
+        td 16
+        td Separar y disponer residuos
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-16')
+      tr
+        td 17
+        td Uso de elementos de protecci&oacute;n personal EPP 
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-17')
+      tr
+        td 18
+        td Disponer de las hojas de seguridad de los productos
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-18')
+      tr
+        td 19
+        td Disponer de sistemas de comunicaci&oacute;n
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-19')
+      tr
+        td 20
+        td Disponer de equipos de extinci&oacute;n del fuego
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-20')
+      tr
+        td 21
+        td Notificar a entidades de socorro retiro de panales
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-21')
+      tr
+        td 22
+        td Autocuidado
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-22')
+      tr
+        td 23
+        td Inspecci&oacute;n vehicular o de moto
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-23')
+      tr
+        td 24
+        td Reporte de Actos y Condiciones inseguras
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-24')
+      tr
+        td 25
+        td Detener actividad
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-25')
+      tr
+        td 26
+        td Airear c&aacute;maras telef&oacute;nicas
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-26')
+      tr
+        td 27
+        td Solicitar apoyo de &aacute;rea HSEQ
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='m-c-27')
+      tr
+        td 28
+        td [ OTRO ]
+        td
+          input.form-control(type='text', name='m-c-28', placeholder='Agregar...')
+  h3.text-wrap.fs-5.fw-bold HERRAMIENTAS Y EQUIPOS
+  .table-responsive
+    table.table.table-striped.table-bordered.mb-5
+      tr
+        th.no No.
+        th Herramientas
+        th.agregar C
+        th.agregar NC
+      tr
+        td 1
+        td Pinzas
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-1', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-1', value='no')
+      tr
+        td 2
+        td Pelacables
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-2', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-2', value='no')
+      tr
+        td 3
+        td Alicates
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-3', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-3', value='no')
+      tr
+        td 4
+        td Corta Frio
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-4', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-4', value='no')
+      tr
+        td 5
+        td Destornillador
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-5', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-5', value='no')
+      tr
+        td 6
+        td Martillo
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-6', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-6', value='no')
+      tr
+        td 7
+        td Ponchadora
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-7', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-7', value='no')
+      tr
+        td 8
+        td Taladro
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-8', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-8', value='no')
+      tr
+        td 9
+        td Dynatel
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-9', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-9', value='no')
+      tr
+        td 10
+        td Ge&oacute;metro
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-10', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-10', value='no')
+      tr
+        td 11
+        td Megger
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-11', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-11', value='no')
+      tr
+        td 12
+        td Fusionadora
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-12', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-12', value='no')
+      tr
+        td 13
+        td Bocina
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-13', value='si')
+        td
+          input.form-check-input.mt-1.ms-1(type='radio', name='h-e-13', value='no')
+  h3.text-wrap.fs-5.fw-bold ESCALERAS
+  .table-responsive
+    table.table.table-bordered.table-striped
+      tr
+        th.no No.
+        th Condici&oacute;n
+        th DOBLE EXTENSI&Oacute;N (F1)
+        th DOBLE EXTENSI&Oacute;N (F2)
+        th TIJERA (ALUMINIO)
+        th ARTICULADA / TELESC&Oacute;PICA
+      tr
+        td 1
+        td Estado General
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-1')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-1')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-1')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-1')
+      tr
+        td 2
+        td Presencia de Grasa o Suciedad
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-2')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-2')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-2')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-2')
+      tr
+        td 3
+        td Escalones
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-3')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-3')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-3')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-3')
+      tr
+        td 4
+        td Pelda&ntilde;os
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-4')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-4')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-4')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-4')
+      tr
+        td 5
+        td Abrazaderas
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-5')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-5')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-5')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-5')
+      tr
+        td 6
+        td Tornillos
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-6')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-6')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-6')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-6')
+      tr
+        td 7
+        td Cuerda de extenci&oacute;n
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-7')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-7')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-7')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-7')
+      tr
+        td 8
+        td Cuerda para vientos
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-8')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-8')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-8')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-8')
+      tr
+        td 9
+        td Polea
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-9')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-9')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-9')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-9')
+      tr
+        td 10
+        td Zapatas
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-10')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-10')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-10')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-10')
+      tr
+        td 11
+        td Arrastradores
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-11')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-11')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-11')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-11')
+      tr
+        td 12
+        td Seguros
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-12')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-12')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-12')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-12')
+      tr
+        td 13
+        td Etiquetas
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-13')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-13')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-13')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-13')
+      tr
+        td 14
+        td Apoya postes
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f1-14')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-f2-14')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-ta-14')
+        td
+          input.form-check-input.mt-1.ms-1(type='checkbox', name='e-at-14')
+        | 2
+  // ÓRDENES DE TRABAJO
+  h2.fs-3.mt-4.fw-bold &Oacute;RDENES DE TRABAJO
+  #ordenes.container-fluid.p-3
+    // AQUÍ VAN LAS ORDENES
+  // MODAL
+  .d-grid.gap-2
+    // Button trigger modal
+    button.btn.btn-primary.mb-2.mt-3.pb-3.pt-3(type='button', data-bs-toggle='modal', data-bs-target='#addOrdenModal')
+      | Agregar Orden
+    // Modal Agregar
+    #addOrdenModal.modal.fade(tabindex='-1', aria-labelledby='addOrdenModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5#addOrdenModalLabel.modal-title Agregar Nueva Orden
+            button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+          .modal-body
+            form#nuevaOrden(action='')
+              .form-floating.mb-3
+                input#nOrden.form-control(type='number', placeholder='name@example.com')
+                label(for='nOrden') N&uacute;mero de Orden
+              .form-floating.mb-3
+                input#hiOrden.form-control(type='time', placeholder='hora inicial')
+                label(for='hiOrden') Hora Inicial
+              p.fs-6 (Opcional)
+              .form-floating.mb-3
+                input#hfOrden.form-control(type='time', placeholder='hora final')
+                label(for='hfOrden') Hora Final
+          .modal-footer
+            button.btn.btn-secondary(type='button', data-bs-dismiss='modal') Cerrar
+            button#btnCrearOrden.btn.btn-primary(type='button') Crear
+  // FIN MODAL 1
+  // MODAL 2
+  .d-grip.gap-2
+    // Modal Editar
+    #editOrdenModal.modal.fade(tabindex='-1', aria-labelledby='editOrdenModalLabel', aria-hidden='true', data-bs-backdrop='static')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5#editOrdenModalLabel.modal-title Editar Orden
+            button#cerrarModal2.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+          .modal-body
+            // Info General
+            .form-floating.mb-3
+              input#edit-nOrden.form-control(type='number', placeholder='name@example.com')
+              label(for='nOrden') N&uacute;mero de Orden
+            .form-floating.mb-3
+              input#edit-hiOrden.form-control(type='time', placeholder='Hora Inicial')
+              label(for='hiOrden') Hora Inicial
+            .form-floating.mb-3
+              input#edit-hfOrden.form-control(type='time', placeholder='Hora Final')
+              label(for='hfOrden') Hora Final
+            // CONDICIONES ESPECÍFICAS
+            h3.text-wrap.fs-5.fw-bold CONDICIONES ESPEC&Iacute;FICIAS DE LA TAREA
+            .d-flex.mb-0
+              .d-flex.flex-row.p-2
+                h4.fs-6 Marcar todas
+                input.form-check-input.mt-1.ms-1(type='checkbox', name='c-e-ma')
+            .table-responsive
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input C
+                  th.input NC
+                tr
+                  td 1
+                  td &iquest;Las condiciones clim&aacute;ticas son favorables para el desarrollo de la actividad?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-1', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-1', value='nc')
+                tr
+                  td 2
+                  td
+                    | &iquest;Se realiza la reuni&oacute;n de an&aacute;lisis de riesgos y se comunica las medidas de control  a todos los trabajadores?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-2', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-2', value='nc')
+                tr
+                  td 3
+                  td
+                    | &iquest;Todos los trabajadores autorizados conocen las medidas de precauci&oacute;n establecidas en la evaluaci&oacute;n de riesgos?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-3', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-3', value='nc')
+                tr
+                  td 4
+                  td
+                    | &iquest;Se ha instalado se&ntilde;alizaci&oacute;n preventiva que delimite el &aacute;rea de trabajo cinta, conos, se&ntilde;ales, etc. Para aislar o restringir?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-4', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-4', value='nc')
+                tr
+                  td 5
+                  td
+                    | &iquest;Se ha verificado que el m&eacute;todo definido a subir la herramienta hacia el sitio de trabajo es seguro?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-5', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-5', value='nc')
+                tr
+                  td 6
+                  td
+                    | &iquest;Se verific&oacute; puntos de anclaje por trabajor, el sistema de aseguramiento de escalera o estructura fija?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-6', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-6', value='nc')
+                tr
+                  td 7
+                  td Efectuar conexi&oacute;n a tierra de equipos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-7', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-7', value='nc')
+                tr
+                  td 8
+                  td &iquest;Se utiliza sistema de ventilaci&oacute;n mec&aacute;nica?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-8', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-8', value='nc')
+                tr
+                  td 9
+                  td &iquest;Se cuenta con condiciones de seguridad para realizar el trabajo?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-9', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-9', value='nc')
+                tr
+                  td 10
+                  td &iquest;La ejecuci&oacute;n de la actividad pone en peligro su seguridad o la de terceros?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-10', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-10', value='nc')
+                tr
+                  td 11
+                  td
+                    | &iquest;Se cumple con las distancias de seguridad para adelantar labores en cercan&iacute;as a l&iacute;neas y/o equipos el&eacute;ctricos energizados?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-11', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-11', value='nc')
+                tr
+                  td 12
+                  td
+                    | En caso de ser una actividad con riesgo el&eacute;ctrico &iquest;Cumple con las 5 reglas de oro?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-12', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-12', value='nc')
+                tr
+                  td 13
+                  td &iquest;Se cuenta con un medio de comunicaci&oacute;n?
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-13', value='c')
+                  td
+                    input.form-check-input.mt-1.ms-1(type='radio', name='c-e-13', value='nc')
+            // PELIGROS Y RIESGOS
+            h3.text-wrap.fs-5.fw-bold PELIGROS Y RIESGOS
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Tareas de Alto Riesgo
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Trabajos en Alturas &gt; 1.50m
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='t-a-r-1')
+                tr
+                  td 2
+                  td Espacios Confinados
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='t-a-r-2')
+                tr
+                  td 3
+                  td Contacto con Redes El&eacute;ctricas
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='t-a-r-3')
+                tr
+                  td 4
+                  td Excavaciones
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='t-a-r-4')
+                tr
+                  td 5
+                  td Caliente, corte y soldadura
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='t-a-r-5')
+                tr
+                  td 6
+                  td Sistema a presi&oacute;n
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='t-a-r-6')
+                tr
+                  td 7
+                  td Izaje y Cargas Suspendidas
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='t-a-r-7')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold F&iacute;sicos
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Ruido
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-1')
+                tr
+                  td 2
+                  td Iluminaci&oacute;n
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-2')
+                tr
+                  td 3
+                  td Vibraciones
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-3')
+                tr
+                  td 4
+                  td Radiaci&oacute;n Ionizante
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-4')
+                tr
+                  td 5
+                  td Radiaci&oacute;n no Ionizante
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-5')
+                tr
+                  td 6
+                  td Temperatura Extrema por Calor
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-6')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Biomec&aacute;nicos
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Postura Prolongada
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-bm-1')
+                tr
+                  td 2
+                  td Postura Mantenida
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-bm-2')
+                tr
+                  td 3
+                  td Postura Forzada
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-bm-3')
+                tr
+                  td 4
+                  td Movimiento Repetitivo
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-bm-4')
+                tr
+                  td 5
+                  td Manejo Manual de Cargas
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-bm-5')
+                tr
+                  td 6
+                  td Esfuerzo
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-bm-6')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Riesgo P&uacute;blico
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Robos, atentados
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='r-p-1')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold El&eacute;ctrico
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Energ&iacute;a Alta Tensi&oacute;n
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-e-1')
+                tr
+                  td 2
+                  td Energ&iacute;a Media Tensi&oacute;n
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-e-2')
+                tr
+                  td 3
+                  td Energ&iacute;a Baja Tensi&oacute;n
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-e-3')
+                tr
+                  td 4
+                  td Energ&iacute;a Est&aacute;tica
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-e-4')
+                tr
+                  td 5
+                  td Tecnol&oacute;gico (Exposici&oacute;n, derrame, fugas)
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-e-5')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Psicosocial
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Caracter&iacute;sticas de la tarea
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-p-1')
+                tr
+                  td 2
+                  td Grupo social de trabajo
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-p-2')
+                tr
+                  td 3
+                  td Organizaci&oacute;n del trabajo
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-p-3')
+                tr
+                  td 4
+                  td Gesti&oacute;n de la Organizaci&oacute;n
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-p-4')
+                tr
+                  td 5
+                  td Jornada de Trabajo
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-p-5')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Biol&oacute;gicos
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Virus
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-b-1')
+                tr
+                  td 2
+                  td Bacterias
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-b-2')
+                tr
+                  td 3
+                  td Picaduras
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-b-3')
+                tr
+                  td 4
+                  td Mordeduras
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-b-4')
+                tr
+                  td 5
+                  td Picaduras
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-b-5')
+                tr
+                  td 6
+                  td Hongos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-b-6')
+                tr
+                  td 7
+                  td Fluidos o excrementos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-b-7')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Mec&aacute;nicos
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Manejo de Herramientas
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-m-1')
+                tr
+                  td 2
+                  td Superficies/Herram. Cortantes
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-m-2')
+                tr
+                  td 3
+                  td Proyecci&oacute;n de Part&iacute;culas
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-m-3')
+                tr
+                  td 4
+                  td Partes en Movimiento
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-m-4')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Locativos
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Condiciones de orden y aseo
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-l-1')
+                tr
+                  td 2
+                  td Almacenamiento de materiales/sustancias
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-l-2')
+                tr
+                  td 3
+                  td Superficies Regulares o Deslizantes
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-l-3')
+                tr
+                  td 4
+                  td Caida de Objetos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-l-4')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Accidente de Tr&aacute;nsito
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Transporte de Materiales o Insumos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-a-t-1')
+                tr
+                  td 2
+                  td Movilizaci&oacute;n Peatonal
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-a-t-2')
+                tr
+                  td 3
+                  td Movilizaci&oacute;n Vehicular (Autom&oacute;vil-Moto-Gr&uacute;a)
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-a-t-3')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Fen&oacute;menos Naturales
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Sismo
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-n-1')
+                tr
+                  td 2
+                  td Terrenitis
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-n-2')
+                tr
+                  td 3
+                  td Derrumbes
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-n-3')
+                tr
+                  td 4
+                  td Lluvias
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-f-n-4')
+            .table-responsive
+              h3.text-wrap.fs-6.fw-bold Qu&iacute;micos
+              table.table.table-striped.table-bordered.mb-5
+                tr
+                  th.no No.
+                  th Condici&oacute;n
+                  th.input X
+                tr
+                  td 1
+                  td Polvos Org&aacute;nicos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-q-1')
+                tr
+                  td 2
+                  td Polvos Inorg&aacute;nicos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-q-2')
+                tr
+                  td 3
+                  td Gases y Vapores
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-q-3')
+                tr
+                  td 4
+                  td L&iacute;quidos (niebla y roc&iacute;o)
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-q-4')
+                tr
+                  td 5
+                  td Humos met&aacute;licos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-q-5')
+                tr
+                  td 6
+                  td Humos NO met&aacute;licos
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-q-6')
+                tr
+                  td 7
+                  td Material Particulado
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-q-7')
+                tr
+                  td 8
+                  td Fibras
+                  td
+                    input.form-check-input.mt-1.ms-1(type='checkbox', name='p-q-8')
+            .modal-footer
+              button#cerrarModal1.btn.btn-secondary(type='button', data-bs-dismiss='modal') Cerrar
+              button#guardarCambios.btn.btn-primary(type='button') Guardar Cambios
+  // FIN MODAL 2
+  hr
+  #divBtnBT.d-block
+    .d-grid.gap-2
+      button#borrarTodo.btn.btn-danger(type='button') BORRAR DATOS
+.container.bg-light.p-2.mb-2
+  #pdfDiv.d-grid.gap-2
+    button#descargarPDF.btn.btn-success.pb-3.pt-3.fw-bold(type='button') DESCARGAR COMO PDF
+script(src='/js/forms/F-GO-05/app.js', type='module')
+script(src='/js/bt/bootstrap.js', type='text/javascript')
