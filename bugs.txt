@@ -8,7 +8,6 @@
 
 /*** UTILIDADES FALTANTES ***/
 1- Mejorar seguridad con CSRFTokens
-2- Evitar reenvio de formularios en TODAS las vistas
 
 
 
