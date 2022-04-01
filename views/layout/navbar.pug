@@ -1,13 +1,13 @@
 - var pagina = pagina
 nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
         .container-fluid
-            a.navbar-brand(href='#')
-                i.bi.bi-person-circle.me-2
+            a.navbar-brand(href='/user').ms-2
+                i.bi.bi-person-circle.me-1
                 | #{user.shortname} | #{pagina}
             if user.role === 'gang-leader'
                 button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
                     span.navbar-toggler-icon
-                #navbarNavDropdown.collapse.navbar-collapse.ms-3
+                #navbarNavDropdown.collapse.navbar-collapse.justify-content-end.me-3
                     ul.navbar-nav
                         li.nav-item
                             a.nav-link(aria-current='page' href='/user') Inicio
@@ -30,7 +30,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
             else if user.role === 'supervisor'
                 button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
                     span.navbar-toggler-icon
-                #navbarNavDropdown.collapse.navbar-collapse.ms-3
+                #navbarNavDropdown.collapse.navbar-collapse.justify-content-end.me-3
                     ul.navbar-nav
                         li.nav-item
                             a.nav-link(aria-current='page' href='/user') Inicio
@@ -49,7 +49,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
             else if user.role === 'admin'
                 button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
                     span.navbar-toggler-icon
-                #navbarNavDropdown.collapse.navbar-collapse.ms-3
+                #navbarNavDropdown.collapse.navbar-collapse.justify-content-end.me-3
                     ul.navbar-nav
                         li.nav-item
                             a.nav-link(aria-current='page' href='/user') Inicio

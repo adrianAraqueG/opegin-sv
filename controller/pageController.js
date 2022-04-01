@@ -3,7 +3,12 @@ import {users as db} from '../config/db.js';
 
 
 const pageLogin = (req, res) =>{
-    res.render('login', {pagina: 'Entrar'});
+    if(req.session.user){
+        res.redirect('/user');
+    }else{
+        res.render('login', {pagina: 'Entrar'});
+    }
+    
 }
 const postLogin = (req, res) =>{
     console.log('accediendo al POST');
@@ -41,7 +46,17 @@ const pageUser =  (req, res) =>{
 const pageForms = (req, res) =>{
     const { form } = req.params
 
-    res.send(`Página: Crear ${form}`);
+    switch(form){
+        case 'f-go-05': {
+            res.render('forms/f-go-05', {
+                pagina: 'F-GO-05',
+                user: req.session.user
+            }); break;
+        }
+        default: {
+            res.send('Creando '.form);
+        }
+    }
 }
 
 const pageReport = (req, res) =>{
@@ -60,7 +75,6 @@ const pageRegister = (req, res) =>{
 
 
 const pageLogout = (req, res) =>{
-    req.session = null
     req.session.destroy();
     res.redirect('/login');
 }
@@ -70,7 +84,6 @@ const pageLogout = (req, res) =>{
  * MIDDLEWARES
  */
 function login(req, res, next){
-    console.log(req.session.user);
     if(!req.session.user){
         res.redirect('/login');
         console.log('No hay cookie session valida');

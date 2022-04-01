@@ -1,14 +1,12 @@
 /*** COSAS POR IMPLEMENTAR ***/
 1- Hacer vistas para TRABAJADORES
 2- Hacer vistas para ADMINISTRADORES
-3- Implementar la APCD a todo
 3- Modelar Base de Datos
 4- Implementar BD y ORM
 5- Pasar código y URLs a 1 sólo idioma
 
 /*** UTILIDADES FALTANTES ***/
 1- Mejorar seguridad con CSRFTokens
-
 
 
 /*** IDEAS, ESQUEMAS, DATOS ***
