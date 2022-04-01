@@ -2,5 +2,60 @@ extends ./layout/index
 
 block content
     include ./layout/navbar
-
-    .container-flud 
+    
+    main.p-2.mt-4.mb-3
+        .container.p-2
+            .row.justify-content-center
+                .col-lg-6
+                    .card
+                        .d-flex.justify-content-center.align-items-center
+                            i.bi.bi-person-bounding-box(style='font-size: 100px;')
+                        .card-body
+                            h5.card-title #{user.allname} | #{user.role}
+                            h6.card-subtitle.mb-2.text-muted ID: #{user.opegin_id}
+                            h6.card-subtitle.mb-2.text-muted C.C: #{user.cc}
+        .container.p-2.mt-3
+            .row.justify-content-center
+                .col-lg-6
+                    .card.p-2
+                        h2.text-center.fw-bold Mis formularios
+                        .d-grid.gap-2
+                            if user.role === 'Técnico'
+                                button.btn.btn-primary.p-2(type='button' onclick="window.location.href='/user/forms/create/f-go-05'") F-GO-05
+                                button.btn.btn-primary.p-2(type='button' onclick="window.location.href='/user/forms/create/f-go-05'") F-SD-11
+                                button.btn.btn-primary.p-2(type='button' onclick="window.location.href='/user/forms/create/f-go-05'") F-GE-06
+                            if user.role === 'Supervisor'
+                                button.btn.btn-primary.p-2(type='button' onclick="window.location.href='/user/forms/create/f-go-05'") F-GE-06
+                            if user.role === 'Admin'
+                                button.btn.btn-primary.p-2(type='button' onclick="window.location.href='/user/forms/create/f-go-05'") TODOS
+        .container.rounded.bg-light.p-2.mt-3
+            h2.text-center  Registros Recientes
+            .table-responsive
+                table.table.table-striped
+                    tr
+                        th ID
+                        th Tipo
+                        th Fecha
+                        th Acciones
+                    tr
+                        td 1
+                        td F-GO-05
+                        td 01/04/2022
+                        td
+                            button.btn.btn-primary.p-2.me-2(type='button')
+                                i.bi.bi-pencil-square.fs-6
+                            button.btn.btn-success.p-2.me-2(type='button')
+                                i.bi.bi-file-earmark-arrow-down-fill
+                            button.btn.btn-danger.p-2.me-2(type='button')
+                                i.bi.bi-trash
+                    tr
+                        td 2
+                        td F-GO-05
+                        td 01/04/2022
+                        td
+                            button.btn.btn-primary.p-2.me-2(type='button')
+                                i.bi.bi-pencil-square.fs-6
+                            button.btn.btn-success.p-2.me-2(type='button')
+                                i.bi.bi-file-earmark-arrow-down-fill
+                            button.btn.btn-danger.p-2.me-2(type='button')
+                                i.bi.bi-trash

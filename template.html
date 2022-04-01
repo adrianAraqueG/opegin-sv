@@ -13,34 +13,88 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><i class="bi bi-person-circle me-2"></i>Carlos A. | Inicio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse ms-3" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Formularios
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">APCD - F-GO-05</a></li>
-                            <li><a class="dropdown-item" href="#">ATS - F-SD-11</a></li>
-                            <li><a class="dropdown-item" href="#">GFD - F-GE-06</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Reportar</a>
-                    </li>
-                </ul>
+    <main class="p-2 mt-4 mb-3">
+        <div class="container p-2">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <i class="bi bi-person-bounding-box" style="font-size: 100px;"></i>
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-title">Carlos Eli Araque | Técnico</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">ID: 076-DS</h6>
+                          <h6 class="card-subtitle mb-2 text-muted">C.C: 75860014</h6>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-      </nav>
+
+        <div class="container p-2 mt-3">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card p-2">
+                        <h2 class="text-center fw-bold">Mis formularios</h2>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary p-2" type="button">F-GO-05</button>
+                            <button class="btn btn-primary p-2" type="button">F-SD-11</button>
+                            <button class="btn btn-primary p-2" type="button">F-GE-06</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container rounded bg-light p-2 mt-3">
+            <h2 class="text-center"> Registros Recientes</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>F-GO-05</td>
+                        <td>01/04/2022</td>
+                        <td>
+                            <button type="button" class="btn btn-primary p-2"><i class="bi bi-pencil-square fs-6"></i></button>
+                            <button type="button" class="btn btn-success p-2"><i class="bi bi-file-earmark-arrow-down-fill"></i></button>
+                            <button type="button" class="btn btn-danger p-2"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>F-GO-05</td>
+                        <td>01/04/2022</td>
+                        <td>
+                            <button type="button" class="btn btn-primary p-2"><i class="bi bi-pencil-square fs-6"></i></button>
+                            <button type="button" class="btn btn-success p-2"><i class="bi bi-file-earmark-arrow-down-fill"></i></button>
+                            <button type="button" class="btn btn-danger p-2"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>F-GO-05</td>
+                        <td>01/04/2022</td>
+                        <td>
+                            <button type="button" class="btn btn-primary p-2"><i class="bi bi-pencil-square fs-6"></i></button>
+                            <button type="button" class="btn btn-success p-2"><i class="bi bi-file-earmark-arrow-down-fill"></i></button>
+                            <button type="button" class="btn btn-danger p-2"><i class="bi bi-trash"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-dark p-2">
+        <p class="text-center text-muted mt-2">© 2022 Opegin, Inc</p>
+    </footer>
 
 </body>
 </html>
