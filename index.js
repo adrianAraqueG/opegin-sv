@@ -6,6 +6,9 @@ import cors from 'cors';
 import router from './routes/index.js';
 import session from 'express-session';
 
+import dotenv from 'dotenv';
+dotenv.config({path: 'variables.env'});
+
 const app = express();
 
 
@@ -47,6 +50,10 @@ app.use(express.static('public'));
 /**
  * SERVER
  */
-app.listen(3000, () =>{
+
+const host = process.env.HOST || '0.0.0.0';
+const port = process.env.PORT || 3000;
+
+app.listen(port, host, () =>{
     console.log('Server is Running at 3000');
 });
