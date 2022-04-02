@@ -1,37 +1,72 @@
-import express from 'express';
-import { 
-    pageLogin,
-    postLogin,
-    pageUser,
-    pageForms,
-    pageRegister,
-    pageReport,
-    pageLogout,
-    login,
-    admin
-} from '../controller/pageController.js';
+/** ----------------------------------------------------------------/
+ *  ------------------- Import Modules & Instances -----------------/
+ *  ---------------------------------------------------------------*/
 
-const router = express.Router();
+    import express from 'express';
+
+    import {
+        getLogin,
+        postLogin,
+        getLogout
+    } from '../controller/loginController.js';
+
+    import {
+        getUser,
+    } from '../controller/userController.js';
+
+    import {
+        getForms,
+    } from '../controller/formsController.js';
+
+    import {
+        getRegisters
+    } from '../controller/registersController.js';
+
+    import {
+        getReport
+    } from '../controller/reportController.js';
+
+    import {
+        login,
+        admin
+    } from './middlewares.js'
+
+    const router = express.Router();
 
 
-// Default Route
-router.get('/', (req, res) =>{
-    res.redirect('/login');
-});
+    /** --- Default Route --- */
+    router.get('/', (req, res) =>{
+        res.redirect('/login');
+    });
 
-// Routing GET
-router.get('/login', pageLogin);
-router.get('/logout', login, pageLogout);
-router.get('/user', login, pageUser);
-router.get('/user/forms/create/:form', login, pageForms);
-router.get('/user/reportar', login, pageReport);
-router.get('/user/registros', login, pageRegister);
-router.get('/user/admin', login, admin, (req, res) =>{
-    res.send('solo admins loks');
-});
+/** ----------------------------------------------------------------/
+ *  -------------------------- GET ---------------------------------/
+ *  ---------------------------------------------------------------*/
+
+    router.get('/login', getLogin);
+
+    router.get('/logout', login, getLogout);
+
+    router.get('/user', login, getUser);
+
+    router.get('/user/forms/create/:form', login, getForms);
+
+    router.get('/user/reportar', login, getReport);
+
+    router.get('/user/registros', login, getRegisters);
+
+    router.get('/user/admin', login, admin, (req, res) =>{
+        res.send('solo admins loks');
+    });
 
 
-// Routing POST
-router.post('/login', postLogin);
+
+/** ----------------------------------------------------------------/
+ *  -------------------------- POST --------------------------------/
+ *  ---------------------------------------------------------------*/
+
+    router.post('/login', postLogin);
+
+
 
 export default router;

@@ -1,59 +1,64 @@
-/**
- * Import Modules & Instances
- */
-import express from 'express';
-import cors from 'cors';
-import router from './routes/index.js';
-import session from 'express-session';
-
-import dotenv from 'dotenv';
-dotenv.config({path: 'variables.env'});
-
-const app = express();
+/** ----------------------------------------------------------------/
+ *  ------------------- Import Modules & Instances -----------------/
+ *  ---------------------------------------------------------------*/
 
 
+    import express from 'express';
 
-/**
- * APP CONFIG
- */
-// Activa políticas CORS para TODAS las RUTAS
-app.use(cors());
+    import cors from 'cors';
 
-// BodiParser
-app.use(express.urlencoded({extended: false}));
+    import router from './routes/index.js';
 
-// Sessions - 30 min expires
-app.use(session({
-    secret: 'test',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 1000 * 60 * 30
-    }
-}))
-// ViewEngine
-app.set('view engine', 'pug');
+    import session from 'express-session';
+
+    import db from './config/db.js';
+
+    import dotenv from 'dotenv';
+    dotenv.config({path: 'variables.env'});
+
+
+    const app = express();
 
 
 
-// Router
-app.use('/', router);
-
-// Definir caperta publica (archivos estáticos)
-app.use(express.static('public'));
+/** ----------------------------------------------------------------/
+ *  ------------------- App Settings & Configs ---------------------/
+ *  ---------------------------------------------------------------*/
 
 
+    app.set('view engine', 'pug');
+
+    app.use(cors());
+
+    app.use(express.urlencoded({extended: false}));
+
+    app.use(session({
+        secret: 'test',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 30
+        }
+    }));
+
+    app.use(express.static('public'));
+
+    db.authenticate()
+        .then( () =>{ console.log('DB Connected') })
+        .catch( err => { console.log(err) });
+
+    app.use('/', router);
 
 
+    
+/** ----------------------------------------------------------------/
+ *  ----------------------- Start Server ---------------------------/
+ *  ---------------------------------------------------------------*/
 
 
-/**
- * SERVER
- */
+    const host = process.env.HOST || '0.0.0.0';
+    const port = process.env.PORT || 3000;
 
-const host = process.env.HOST || '0.0.0.0';
-const port = process.env.PORT || 3000;
-
-app.listen(port, host, () =>{
-    console.log('Server is Running at 3000');
-});
+    app.listen(port, host, () =>{
+        console.log('Server is Running at 3000');
+    });
